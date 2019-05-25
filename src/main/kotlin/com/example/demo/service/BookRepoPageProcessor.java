@@ -15,11 +15,11 @@ public class BookRepoPageProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
 
-            List<Selectable> selectableList = new ArrayList<>();
             List<Book> books = new ArrayList<>();
-            selectableList = page.getHtml().css("div.detail-frame").nodes();
+            List<Selectable> selectableList = page.getHtml().css("div.detail-frame").nodes();
             selectableList.forEach(it -> {
                 Book book = new Book();
+                book.setId((int)Math.floor(Math.random()*10000));
                 book.setBookName(it.css("h2 a","text").get());
                 book.setRating(it.css("p.rating span.font-small","text").get());
                 book.setNote(it.css("p:last-child","text").get());

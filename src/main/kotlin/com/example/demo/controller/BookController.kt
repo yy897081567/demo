@@ -22,6 +22,8 @@ class BookController {
     @GetMapping("/books/latest")
     @ApiOperation(value = "获取豆瓣最新书籍信息", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     fun getBooks(): List<Book> {
+        bookRepository.deleteAll()
+        bookRepository.saveAll(BookPipeline.books)
         return BookPipeline.books
     }
 
