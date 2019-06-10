@@ -16,6 +16,7 @@ public class BookRepoPageProcessor implements PageProcessor {
     public void process(Page page) {
 
             List<Book> books = new ArrayList<>();
+        System.out.println(page.getHtml());
             List<Selectable> selectableList = page.getHtml().css("div.detail-frame").nodes();
             selectableList.forEach(it -> {
                 Book book = new Book();
